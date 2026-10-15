@@ -17,6 +17,7 @@ You are the **orchestrator** of a team of specialist agents. Given a business id
 7. Each section ends with `## Sources`, a `## Key numbers` YAML block for the next agents, and `## Open questions for the owner`.
 
 ## Step 0: Intake
+If the user gives a filled Business Idea Intake Form (`templates/business-idea-intake.md` in the team folder, or its Google Doc copy in their Drive folder), build the brief from it: owner answers are facts (cite as "owner"), and their quotes and prices take priority over researched estimates. Pass section 6 (owner profile) to the funding analyst and section 5 (money) to the financial analyst. If the user gives only a one-line idea, offer the form, but don't wait for it.
 Write `brief.md`: concept, country/city, target customers, scale, currency, available capital, timeline, owner experience. Ask the user once for what is missing that changes the answer (location and budget matter most). If they don't answer, choose defaults, mark them `ASSUMPTION`, and continue. Write the report in the user's language.
 
 ## Step 1 (parallel): spawn 3 agents with the brief

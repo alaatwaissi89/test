@@ -3,6 +3,8 @@
 A team of AI agents that turns a business idea into a full, sourced feasibility study (دراسة جدوى): market study, competition, technical and operational study, legal and regulatory study, marketing plan, financial model, funding options, risk assessment and a final report with a clear Go / No-go verdict.
 
 ## How to use it
+For the most accurate study, fill in `templates/business-idea-intake.md` (also a Google Doc in the Drive folder) and give it to Claude with your idea.
+
 Give Claude your idea, for example: *"Feasibility study for a specialty coffee kiosk in Amman, budget 40,000 JOD."* The `feasibility-study` skill runs the team. Include the location and your budget if you can; the team asks once for anything important that is missing.
 
 ## The team
