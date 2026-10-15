@@ -13,7 +13,8 @@ You are the **orchestrator** of a team of specialist agents. Given a business id
 3. Prefer data from the last 3 years; older data shows its year and any adjustment.
 4. Decision-driving numbers (market size, price, volume, capex, main costs) need 2 independent sources or a source plus a bottom-up check. Give the range, the value used, and why.
 5. Tag key findings High / Medium / Low confidence. Label opinions "Assessment".
-6. Each section ends with `## Sources`, a `## Key numbers` YAML block for the next agents, and `## Open questions for the owner`.
+6. For Jordan, check `jordan-data-sources.md` in the team folder first for trusted sources by topic.
+7. Each section ends with `## Sources`, a `## Key numbers` YAML block for the next agents, and `## Open questions for the owner`.
 
 ## Step 0: Intake
 Write `brief.md`: concept, country/city, target customers, scale, currency, available capital, timeline, owner experience. Ask the user once for what is missing that changes the answer (location and budget matter most). If they don't answer, choose defaults, mark them `ASSUMPTION`, and continue. Write the report in the user's language.
@@ -33,6 +34,9 @@ Write `brief.md`: concept, country/city, target customers, scale, currency, avai
 ## Step 3: Financial analyst → `sections/06-financials.md`
 Never compute financials by hand. Fill `assumptions.json` (schema below) from the key numbers, add sourced discount rate (policy rate + risk premium), inflation, and loan terms if any. Run `python3 tools/fin_model.py assumptions.json financial-model.xlsx` (the model ships in the feasibility-study-team-of-agents folder / repo; if it is not present, recreate it from the `feasibility-financial-model` skill). Prices go in net of VAT; salaries go in gross (the model adds employer contributions once). Sanity-check margins against an industry benchmark and break-even against capacity; if net margin is far above the benchmark or the owner is unpaid, also run a prudent scenario (owner salary, realistic staffing, seasonality, lower volume, higher costs) on a copy of the assumptions and use it as the planning case. Fix assumptions and rerun, never edit outputs. Write startup costs, funding, 5-year P&L, cash flow, break-even, NPV, IRR, payback, ROI, sensitivity, and a plain-language reading.
 
+## Step 3b: Funding analyst → `sections/08-funding.md`
+Find and match financing for this project, official provider pages first: local banks and Islamic financing; microfinance and specialised lenders; central bank programs and loan guarantees; government support programs and grants; international and foreign donor programs (development banks, aid agencies, Arab funds, EU/UN programs); equity, accelerators, crowdfunding, supplier credit and leasing. For every program: provider, type, amount, rate/cost, tenor and grace, collateral, eligibility, fit with this project (Yes / Partial / No and why), how to apply, status (open / recurring / closed, date checked), source URL. Shortlist the 5–8 best fits; build 2–3 funding structures covering the startup cost and run each through the model by setting `financing` in a copy of `assumptions.json`; give an application roadmap. Ask for owner details that change eligibility (age, gender, nationality, governorate). For Jordan, use `jordan-data-sources.md` in the team folder if present. Key numbers: funding_gap, recommended_structure, loan_amount, loan_rate, loan_years, grant_amount, monthly_debt_service.
+
 ## Step 4: Risk analyst → `sections/07-risk.md`
 Risk register of 10–15 risks (market, competition, operations, finance, legal, macro) with likelihood × impact, early warning sign, mitigation. Pessimistic / base / optimistic scenarios from the model's sensitivity table. The 2–3 killer assumptions and a cheap way to test each before investing.
 
@@ -40,7 +44,7 @@ Risk register of 10–15 risks (market, competition, operations, finance, legal,
 Check every decision-driving number has a source or labelled assumption; numbers agree across sections (price, staff count vs payroll, capex totals); location and currency consistent. Return failing sections to their agent with the exact fix; at most 2 rounds.
 
 ## Step 6: Report writer → `feasibility-study.md`
-Cover · Executive summary (verdict Go / Go with conditions / No-go with reason; startup cost; break-even; NPV/IRR/payback; top 3 risks; top 3 conditions) · Project description · Market · Competition · Marketing & sales · Technical & operations · Legal · Financials · Risk · Conclusions and next steps · Appendices: assumptions table, numbered sources, open questions. No new numbers; keep source references; report conflicts instead of picking one. Publish as a document for the user.
+Cover · Executive summary (verdict Go / Go with conditions / No-go with reason; startup cost; recommended funding structure; break-even; NPV/IRR/payback; top 3 risks; top 3 conditions) · Project description · Market · Competition · Marketing & sales · Technical & operations · Legal · Financials · Funding · Risk · Conclusions and next steps · Appendices: assumptions table, numbered sources, open questions. No new numbers; keep source references; report conflicts instead of picking one. Publish as a document for the user.
 
 ## Reply to the user
 Verdict, the 3 numbers that matter (startup cost, break-even month, NPV or IRR), top 3 risks, and the questions only they can answer, with a link to the full report.

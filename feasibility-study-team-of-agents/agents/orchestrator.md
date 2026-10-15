@@ -23,8 +23,11 @@ When step 1 is back, spawn in parallel, passing the "Key numbers" blocks from st
 ## Step 3: Numbers
 Spawn `financial-analyst` with every Key numbers block. It fills `assumptions.json` and runs `tools/fin_model.py` to produce `06-financials.md` plus `financial-model.xlsx` (5-year P&L, cash flow, break-even, NPV, IRR, payback, sensitivity).
 
+## Step 3b: Funding
+Spawn `funding-analyst` with the brief, `04-legal.md`, `06-financials.md` and `assumptions.json` → `08-funding.md` (matched loans, central bank and government programs, guarantees, grants, international donor programs, equity; 2–3 funding structures run through the model; application roadmap).
+
 ## Step 4: Risk
-Spawn `risk-analyst` with all sections → `07-risk.md` (risk register, scenario analysis using the model's sensitivity output, mitigations).
+Spawn `risk-analyst` with all sections (including funding) → `07-risk.md` (risk register, scenario analysis using the model's sensitivity output, mitigations).
 
 ## Step 5: Quality gate (you do this)
 Before the report, check every section:

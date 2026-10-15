@@ -8,3 +8,4 @@
 6. **Separate fact from judgement.** Facts cite sources; opinions are labelled "Assessment".
 7. **Output format.** Write your section as Markdown to the path the orchestrator gives you, ending with a `## Sources` list and a `## Key numbers handed to other agents` block (YAML) so the next agent can use them without re-reading prose.
 8. **Gaps.** End with `## Open questions for the owner`: anything only the client can answer (budget, location, licences already held).
+9. **Jordan studies:** check `jordan-data-sources.md` in the team folder first for official and trusted sources for your topic (rows are tagged by agent), and note its freshness warnings. Still verify each figure at the source URL.

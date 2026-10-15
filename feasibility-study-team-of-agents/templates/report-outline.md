@@ -13,8 +13,9 @@
 ## 6. Technical and operational study
 ## 7. Legal and regulatory study
 ## 8. Financial study
-## 9. Risk assessment
-## 10. Conclusions, recommendations and next steps
+## 9. Funding and financing options
+## 10. Risk assessment
+## 11. Conclusions, recommendations and next steps
 ## Appendix A: Assumptions table (value, source, confidence)
 ## Appendix B: Sources (numbered)
 ## Appendix C: Open questions for the owner

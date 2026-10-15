@@ -1,0 +1,319 @@
+{
+ "project": "Specialty Coffee Shop Unit (walk-up window), Al-Jubeiha, Amman - PRUDENT scenario (risk-analyst) - funding S1_gap_bank",
+ "currency": "JOD",
+ "_note": "Every number carries a source or 'ASSUMPTION: reason'. Prices exclude GST: marketing prices are GST-inclusive (16%, 04-legal) and are divided by 1.16 here.",
+ "capex": [
+  {
+   "name": "Espresso machine 2-group",
+   "amount": 3150,
+   "life_years": 7,
+   "source": "03-operations 3.3 [E1][E2]: AED 13,020 UAE price + 25% landed (ASSUMPTION)"
+  },
+  {
+   "name": "Espresso grinders x2",
+   "amount": 2160,
+   "life_years": 5,
+   "source": "03-operations 3.3 [E4]"
+  },
+  {
+   "name": "Water filtration",
+   "amount": 250,
+   "life_years": 5,
+   "source": "03-operations 3.3, ASSUMPTION"
+  },
+  {
+   "name": "Cold-brew and batch-brew kit",
+   "amount": 300,
+   "life_years": 5,
+   "source": "03-operations 3.3, ASSUMPTION"
+  },
+  {
+   "name": "Refrigeration and display chiller",
+   "amount": 1800,
+   "life_years": 7,
+   "source": "03-operations 3.3, ASSUMPTION"
+  },
+  {
+   "name": "Ice machine",
+   "amount": 600,
+   "life_years": 5,
+   "source": "03-operations 3.3, ASSUMPTION"
+  },
+  {
+   "name": "Blender",
+   "amount": 300,
+   "life_years": 3,
+   "source": "03-operations 3.3 [E3]"
+  },
+  {
+   "name": "Convection oven",
+   "amount": 400,
+   "life_years": 5,
+   "source": "03-operations 3.3, ASSUMPTION"
+  },
+  {
+   "name": "POS hardware",
+   "amount": 600,
+   "life_years": 4,
+   "source": "03-operations 3.3, ASSUMPTION"
+  },
+  {
+   "name": "Smallwares",
+   "amount": 500,
+   "life_years": 3,
+   "source": "03-operations 3.3, ASSUMPTION"
+  },
+  {
+   "name": "Fit-out",
+   "amount": 7500,
+   "life_years": 5,
+   "source": "03-operations 3.2/3.3, ASSUMPTION JOD 250-300/m2, Low confidence"
+  },
+  {
+   "name": "Air conditioning",
+   "amount": 600,
+   "life_years": 7,
+   "source": "03-operations 3.3, ASSUMPTION"
+  },
+  {
+   "name": "Signage and menu boards",
+   "amount": 800,
+   "life_years": 5,
+   "source": "03-operations 3.3, ASSUMPTION"
+  },
+  {
+   "name": "Contingency (~10%)",
+   "amount": 1900,
+   "life_years": 5,
+   "source": "03-operations 3.3, ASSUMPTION"
+  },
+  {
+   "name": "Key money (khilw)",
+   "amount": 5000,
+   "life_years": 5,
+   "source": "07-risk: OpenSooq Amman listings Oct 2026, khilw JOD 5,000 (Umm Al-Summaq) and 6,900 (Majdi Mall booth, University St); lower end used, amortised over 5-yr lease ASSUMPTION"
+  }
+ ],
+ "pre_opening_costs": [
+  {
+   "name": "Government registrations, licences, certificates",
+   "amount": 1500,
+   "source": "04-legal setup_fees_total, ASSUMPTION Low confidence"
+  },
+  {
+   "name": "Lawyer / accountant / licensing agent",
+   "amount": 750,
+   "source": "04-legal: JOD 500-1,000 professional fees, midpoint used"
+  },
+  {
+   "name": "Pre-opening marketing (brand design + opening tastings)",
+   "amount": 710,
+   "source": "05-marketing marketing_preopening_oneoff"
+  },
+  {
+   "name": "Rent during fit-out and licensing (4 months x 550)",
+   "amount": 2200,
+   "source": "ASSUMPTION: lease signed month 1, opening month 5 (03-operations 3.7); rent 550/month (03-operations [R5][R6]). Paid inside the first 6-month advance; the other 2 advance months cover operating months 1-2, already charged in fixed opex"
+  },
+  {
+   "name": "Pre-opening staff hiring and training",
+   "amount": 1075,
+   "source": "ASSUMPTION: head barista 1.5 months + barista 0.5 month before opening (03-operations 3.7) at gross 500/380 x 1.1425 employer SS"
+  },
+  {
+   "name": "Opening inventory (beans, milk, cups, pastries) and dial-in",
+   "amount": 650,
+   "source": "ASSUMPTION: about 2 weeks of month-1 cost of goods"
+  }
+ ],
+ "working_capital_months": 3,
+ "revenue_streams": [
+  {
+   "name": "Coffee drinks",
+   "price": 2.112,
+   "price_source": "05-marketing blended ticket JOD 2.45 GST-inclusive / 1.16 (GST 16%, 04-legal) = 2.112 net",
+   "unit_cost": 0.7705,
+   "unit_cost_source": "03-operations 3.5: weighted COGS per drink incl. packaging and 5% waste",
+   "units_month_y1": [
+    1320,
+    1680,
+    2040,
+    2052,
+    1890,
+    2070,
+    2100,
+    3120,
+    3240,
+    3480,
+    3600,
+    2976
+   ],
+   "units_year": [
+    29812,
+    42719,
+    55037,
+    57658,
+    60016
+   ],
+   "volume_source": "05-marketing section 5 ramp (built on 01-market SOM 117/163/210 drinks/day); units_year[0] ignored by the model"
+  },
+  {
+   "name": "Pastries",
+   "price": 1.509,
+   "price_source": "05-marketing pastry average JOD 1.75 GST-inclusive / 1.16 = 1.509 net",
+   "unit_cost": 0.69,
+   "unit_cost_source": "03-operations 3.5, ASSUMPTION Low confidence",
+   "units_month_y1": [
+    290,
+    370,
+    449,
+    451,
+    416,
+    455,
+    462,
+    686,
+    713,
+    766,
+    792,
+    655
+   ],
+   "units_year": [
+    6559,
+    9398,
+    12108,
+    12685,
+    13204
+   ],
+   "volume_source": "05-marketing: 0.22 pastries per drink"
+  }
+ ],
+ "price_growth": 0.02,
+ "_price_growth_source": "ASSUMPTION: menu prices raised ~2%/yr, slightly below CPI (DoS 2.26% Jan-Sep 2026); marketing held prices flat and invited indexation",
+ "channel_commission_pct": 0.045,
+ "_channel_commission_source": "Delivery: 15% of sales via Talabat/Careem x 25% all-in commission = 3.75% of revenue (05-marketing). Card fees: ASSUMPTION 60% of walk-up (85%) sales paid by card at 1.5% MDR = 0.77%; Jordan bank MDRs not published (Jordan Islamic Bank POS page gives no figure); Careem payment processing 1.5-3% (Menuviel 2026) as context. Total 4.52%, rounded to 4.5%",
+ "fixed_opex_monthly": [
+  {
+   "name": "Rent",
+   "amount": 550,
+   "source": "03-operations 3.2 [R5][R6]"
+  },
+  {
+   "name": "Electricity",
+   "amount": 175,
+   "source": "03-operations 3.6 [U1][U2]"
+  },
+  {
+   "name": "Water and sewage",
+   "amount": 25,
+   "source": "03-operations 3.6, ASSUMPTION"
+  },
+  {
+   "name": "Internet",
+   "amount": 30,
+   "source": "03-operations 3.6 [I6]"
+  },
+  {
+   "name": "POS / back-office software",
+   "amount": 30,
+   "source": "03-operations 3.6 [U3]"
+  },
+  {
+   "name": "Insurance",
+   "amount": 25,
+   "source": "03-operations 3.6, ASSUMPTION"
+  },
+  {
+   "name": "Maintenance and machine servicing",
+   "amount": 40,
+   "source": "03-operations 3.6, ASSUMPTION"
+  },
+  {
+   "name": "Cleaning and chemicals",
+   "amount": 30,
+   "source": "03-operations 3.6, ASSUMPTION"
+  },
+  {
+   "name": "Bookkeeping / accountant",
+   "amount": 50,
+   "source": "03-operations 3.6, ASSUMPTION"
+  },
+  {
+   "name": "Annual licence renewals and health certificates (monthly accrual)",
+   "amount": 30,
+   "source": "ASSUMPTION: ~JOD 360/yr; 04-legal says renewal fees exist but amounts not retrievable"
+  }
+ ],
+ "_fixed_opex_note": "Operations' JOD 150/month local marketing line is excluded here because the marketing section's budget (separate marketing input) already covers ads, sampling and influencers.",
+ "opex_inflation": 0.025,
+ "opex_inflation_source": "Jordan DoS via QNA 12 Oct 2026: CPI +2.26% Jan-Sep 2026 y/y, +2.73% Sept y/y; 2.5% used (midpoint)",
+ "payroll": [
+  {
+   "role": "Head barista",
+   "count_by_year": [
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "monthly_salary": 500,
+   "source": "03-operations 3.4 [W1][W2], gross"
+  },
+  {
+   "role": "Barista",
+   "count_by_year": [
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "monthly_salary": 380,
+   "source": "03-operations 3.4 [W3][W4], gross"
+  },
+  {
+   "role": "Part-time barista",
+   "count_by_year": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "monthly_salary": 180,
+   "source": "03-operations 3.4, ASSUMPTION, gross"
+  },
+  {
+   "role": "Owner-manager (salary)",
+   "count_by_year": [
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "monthly_salary": 600,
+   "source": "03-operations 3.4 ASSUMPTION: owner works unpaid; see owner-salary scenario"
+  }
+ ],
+ "employer_contribution_rate": 0.1425,
+ "employer_contribution_source": "04-legal (PwC/Payoneer). Salaries above are GROSS (operations' 1,005/1,211/1,440 totals already include SS), so SS is applied once here",
+ "salary_growth": 0.025,
+ "_salary_growth_source": "ASSUMPTION: wages track CPI (2.5%)",
+ "marketing": {
+  "monthly_y1": 658,
+  "pct_revenue_after_y1": 0.03,
+  "source": "05-marketing: year-1 JOD 7,890 (3x980 + 9x550) = 658/month average; 3% of revenue from year 2"
+ },
+ "corporate_tax_rate": 0.21,
+ "corporate_tax_source": "04-legal: 20% CIT + 1% national contribution (PwC 2026), LLC",
+ "financing": {
+  "loan_amount": 4049,
+  "loan_rate": 0.1,
+  "loan_years": 5,
+  "source": "08-funding scenario: Equity 40,000 + JLGC-guaranteed bank start-up loan 4,049 @10%/5y"
+ },
+ "discount_rate": 0.16,
+ "discount_rate_source": "CBJ main policy rate 5.75% (held 30 Jul 2026, Jordan News) + ASSUMPTION 10% premium for a small, unlisted, first-time owner food business = 15.75%, rounded to 16%. Cross-check: Jordan bank lending rate 8.24% (CEIC, Jan 2025); equity in a startup should require well above that",
+ "residual_value_pct": 0.0
+}

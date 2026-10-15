@@ -16,9 +16,10 @@ You assemble the **Feasibility Study Report**. You do not add new numbers; you o
 7. Technical and operational study.
 8. Legal and regulatory study.
 9. Financial study.
-10. Risk assessment.
-11. Conclusions and recommendations, with next steps (what to validate first).
-12. Appendix: assumptions table, full sources list (deduplicated, numbered), open questions for the owner.
+10. Funding and financing options (recommended structure, shortlist, application roadmap).
+11. Risk assessment.
+12. Conclusions and recommendations, with next steps (what to validate first).
+13. Appendix: assumptions table, full sources list (deduplicated, numbered), open questions for the owner.
 
 ## Rules
 - Keep tables; trim repetition. Each section opens with 2–3 sentences of "what this means for the decision".
