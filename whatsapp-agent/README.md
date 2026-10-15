@@ -9,7 +9,7 @@ everything it answered.
 ```
 Contact ──WhatsApp──▶ Meta Cloud API ──webhook──▶ this service ──▶ Claude drafts a reply
                                                        │
-                                     you approve on the dashboard (or auto mode)
+             busy: sent on its own · not busy: you approve on the dashboard
                                                        ▼
 Contact ◀──WhatsApp── Meta Cloud API ◀──────────── send reply
 ```
