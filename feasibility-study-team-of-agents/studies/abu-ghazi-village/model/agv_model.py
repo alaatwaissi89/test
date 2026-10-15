@@ -210,6 +210,21 @@ GALLERY = {
     "G4 High-end 128k: 50k tranche + 78k grant/partner, upside 104,859": gallery(104859, 128000, 2, CORE + [fac("Gallery tranche", 50000, 0.0325, 12, 72)], grant=78000),
 }
 
+# ---------------------------------------------------------------- refinancing the owner's existing ~140k loan (added 15 Oct 2026)
+# Owner says total debt must be >= 250k because an existing loan of ~140k sits on the project.
+# Its lender, rate and remaining term are unknown [VERIFY]; these cases assume it is fully refinanced.
+REFI = {
+    "R1 250k CBJ sectors programme @3.25%, 12m grace + 108": variant(core=True, facilities=[fac("CBJ", 250000, 0.0325)]),
+    "R2 305k (140k refi + 165k new) CBJ @3.25%, 12m grace + 108": variant(core=True, facilities=[fac("CBJ", 305000, 0.0325)]),
+    "R3 110k CBJ @3.25% + 140k refi commercial @8.5% 10y": variant(core=True, facilities=[fac("CBJ", 110000, 0.0325), fac("Refi", 140000, 0.085)]),
+    "R4 110k CBJ @3.25% + 140k refi Islamic @7% 15y (12m grace + 168)": variant(core=True, facilities=[fac("CBJ", 110000, 0.0325), fac("Refi", 140000, 0.07, 12, 168)]),
+    "R5 RECOMMENDED if 250k: one 250k Islamic diminishing musharaka/ijara @7% 15y (12m grace + 168)": variant(core=True, facilities=[fac("Islamic", 250000, 0.07, 12, 168)]),
+    "R5s R5 with revenue -10%": variant(core=True, facilities=[fac("Islamic", 250000, 0.07, 12, 168)], revenue_factor=0.9),
+    "R6 250k commercial @8.5% 15y (12m grace + 168)": variant(core=True, facilities=[fac("Commercial", 250000, 0.085, 12, 168)]),
+    "R7 305k: 165k CBJ + 140k refi Islamic @7% 15y": variant(core=True, facilities=[fac("CBJ", 165000, 0.0325), fac("Refi", 140000, 0.07, 12, 168)]),
+    "Cap: 205k CBJ @3.25% 10y (DSCR ~1.25 limit)": variant(core=True, facilities=[fac("CBJ", 205000, 0.0325)]),
+}
+
 # ---------------------------------------------------------------- stress tests on recommended core
 def occ(level):
     return [min(0.85, level)] + [level] * 9
@@ -240,7 +255,7 @@ def fmt(x, d=0):
 
 
 def main():
-    results = {"funding": {}, "gallery": {}, "stress": {}}
+    results = {"funding": {}, "gallery": {}, "stress": {}, "refinance": {}}
     md = []
     base_rows, base_sum, base_sched = run(variant(core=True))
     wc_rows, wc_sum, _ = run(variant())
@@ -261,10 +276,13 @@ def main():
         rows, s, _ = run(a)
         results["gallery"][name] = dict(summary=s, dscr=[r["dscr"] for r in rows], cash=[r["closing_cash"] for r in rows],
                                         revenue=[r["revenue"] for r in rows])
+    for name, a in REFI.items():
+        rows, s, _ = run(a)
+        results["refinance"][name] = dict(summary=s, dscr=[r["dscr"] for r in rows], cash=[r["closing_cash"] for r in rows])
     for name, a in STRESS.items():
         rows, s, _ = run(a)
         results["stress"][name] = dict(summary=s, dscr=[r["dscr"] for r in rows], cash=[r["closing_cash"] for r in rows])
-    for grp in ("funding", "gallery", "stress"):
+    for grp in ("funding", "gallery", "stress", "refinance"):
         md.append(f"## {grp}\n")
         md.append("| Case | Debt | Monthly pmt | DSCR Y2 | Min DSCR Y2-10 | Avg DSCR | DSCR Y10 | Min cash | Total interest |")
         md.append("|---|---:|---:|---:|---:|---:|---:|---:|---:|")
@@ -370,7 +388,7 @@ def write_xlsx(a, rows, results):
         c.cell(r, 1).font = bold
 
     # Scenario sheets (values from the Python engine)
-    for grp, title in (("funding", "Funding options"), ("gallery", "Gallery scenarios"), ("stress", "Stress tests")):
+    for grp, title in (("funding", "Funding options"), ("gallery", "Gallery scenarios"), ("stress", "Stress tests"), ("refinance", "Refinance 140k")):
         s = wb.create_sheet(title)
         s.append(["Case", "Total debt", "Monthly payment", "DSCR Y2", "Min DSCR Y2-10", "Avg DSCR", "DSCR Y10", "Min closing cash", "Total interest 10y"]
                  + [f"DSCR Y{y}" for y in range(1, 11)])
