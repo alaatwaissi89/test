@@ -1,7 +1,10 @@
 # WhatsApp Assistant Agent
 
-An agent that reads the WhatsApp messages people send you, drafts a reply with
-Claude in your voice (Arabic or English), and sends it after you approve it.
+Dr. Alaa's WhatsApp assistant. While you're busy, it answers the messages people
+send you on its own, in Jordanian Arabic (or English), and tells each person at
+the start of the chat that they're talking to an AI assistant. It keeps patient
+messages and personal messages apart, and when you're back it shows a summary of
+everything it answered.
 
 ```
 Contact ──WhatsApp──▶ Meta Cloud API ──webhook──▶ this service ──▶ Claude drafts a reply
@@ -27,26 +30,55 @@ Contact ◀──WhatsApp── Meta Cloud API ◀──────────
 
 | Path | What it is |
 |---|---|
-| `agent/whatsapp-assistant.md` | The agent's instructions: tone, languages, what it may and must never do. Edit freely. |
-| `agent/knowledge.md` | Facts about you the agent is allowed to use in replies. Fill this in. |
-| `app/server.py` | Webhook that receives messages, plus the approval dashboard. |
+| `agent/whatsapp-assistant.md` | The agent's rules: Jordanian dialect, patient vs personal, what it may and must never say to patients. Edit freely. |
+| `agent/knowledge.md` | Clinic facts the agent may share (address, hours, booking, fees). Fill this in. |
+| `app/server.py` | Webhook that receives messages, plus the dashboard (busy switch, tabs, summary). |
 | `app/brain.py` | Calls Claude to draft each reply. |
 | `app/whatsapp.py` | Checks Meta's signature on webhooks and sends messages. |
 | `app/store.py` | Small SQLite database of chats and drafts. |
 | `tests/test_flow.py` | Tests with fake Claude and fake WhatsApp (nothing is sent). |
 | `.env.example` | Every setting and credential, with where to find it. |
 
+## How you use it
+
+- **I'm busy / I'm back**: one button at the top of the dashboard. While busy,
+  the assistant replies to everyone by itself. When you press **I'm back**, it
+  opens the summary of what happened while you were busy.
+- **When you're not busy**, replies wait on the dashboard until you press
+  **Send** (you can edit the text first) or **Don't send** (`REPLY_MODE=approve`).
+- **Patients and Personal** are separate tabs. Claude decides which one each
+  message is.
+- **Summary** lists each conversation from your busy period, patients and
+  anything that needs you first, with one line per message. A button asks Claude
+  for a short written summary.
+
+## What the assistant will and won't say
+
+- Jordanian dialect for Arabic messages, Arabizi for Arabizi, English for English.
+- First reply in each conversation (or after 24 hours of quiet) starts with:
+  "🤖 معك المساعد الذكي (AI) تبع د. علاء. الدكتور بشوف الرسائل وبرد عليك بأقرب وقت إن شاء الله."
+- Patients get short, general answers only: clinic info, booking, what to
+  bring, and simple safe advice such as rest. It never diagnoses, never names
+  medicines or doses, and never reads X-rays or reports; those are flagged for you.
+- Emergency signs (bone out of place, cold or numb limb, loss of bladder control
+  with back pain, fever with a hot joint or infected wound, calf swelling or
+  breathlessness after surgery) get an immediate "go to the emergency department
+  or call 911" reply and are flagged for you.
+- Verification codes, bank alerts and automated messages are skipped.
+
 ## Safety defaults
 
-- `REPLY_MODE=approve`: every draft waits on the dashboard until you press
-  **Send** (you can edit the text first) or **Don't send**.
-- `DRY_RUN=true`: even approved replies are only logged, not sent. Turn it off
-  when you're ready to go live.
-- In `auto` mode, drafts the agent flags as needing you (money, meetings,
-  commitments, anything it doesn't know) still wait for you.
-- Verification codes, bank alerts and automated messages are skipped.
+- `DRY_RUN=true`: even approved or busy-mode replies are only logged, not sent.
+  Turn it off when you're ready to go live.
 - Webhooks without a valid Meta signature are rejected; the dashboard is
   password protected.
+- Patient messages are health information: they're stored in the service's
+  database (`data/`) and sent to Claude to draft replies. Host it somewhere you
+  control, keep the dashboard password strong, and check what Jordanian rules
+  on patient data apply to you.
+- The rules live in `agent/whatsapp-assistant.md` and the clinic facts in
+  `agent/knowledge.md`. Fill in the clinic details there; the assistant won't
+  invent any.
 
 ## What you need (credentials)
 
@@ -81,8 +113,8 @@ commit `.env`.
 5. **Test**: send a WhatsApp message to the business number. Open
    `https://YOUR-HOST/` (log in with any username and your dashboard
    password) and you'll see the incoming message and Claude's draft.
-6. **Go live**: when the drafts look right, set `DRY_RUN=false`. Later, if you
-   trust it, set `REPLY_MODE=auto`.
+6. **Go live**: when the drafts look right, set `DRY_RUN=false`, then use the
+   **I'm busy** button whenever you want the assistant to take over.
 
 ## Run and test locally
 
@@ -101,5 +133,5 @@ such as `ngrok http 8000` and use that HTTPS URL in step 4.
 ## Cost
 
 Each incoming message is one Claude call (`claude-opus-5-5`, low effort by
-default). WhatsApp service conversations started by the customer are free on
+default), plus one when you ask for a written summary. WhatsApp service conversations started by the customer are free on
 Meta's current pricing; check Meta's pricing page for your country.
