@@ -1,6 +1,6 @@
 # 08 · Funding & Financing Options: Specialty Coffee Shop Unit, Al-Jubeiha, Amman
 
-*Prepared by the funding-analyst agent, 15 Oct 2026. Currency: JOD. All program statuses were checked on 15 Oct 2026. Every loan figure (instalment, interest, cash to owner, NPV, payback) comes from `tools/fin_model.py`, run on copies of `scenarios/assumptions-prudent.json`. None were computed by hand. The scenario files are in the session scratchpad, not in this folder (see §4).*
+*Prepared by the funding-analyst agent, 15 Oct 2026. Currency: JOD. All program statuses were checked on 15 Oct 2026. Every loan figure (instalment, interest, cash to owner, NPV, payback) comes from `tools/fin_model.py`, run on copies of `scenarios/assumptions-prudent.json`. None were computed by hand. The scenario files are in `scenarios/funding/`.*
 
 **Summary.**
 - The Prudent plan costs **JOD 44,049**. Against the brief's JOD 40,000 of equity, that leaves a gap of **JOD 4,049**. It rises to about JOD 7–8k if the landlord wants a 12-month rent advance (07-risk R7).
@@ -145,8 +145,8 @@ Method:
 - **"Owner cash kept outside"** is JOD 40,000 minus the equity put in.
 
 Scripts and outputs:
-- Scenario files: `/tmp/claude-0/-home-claude-test/f1a7c95d-e67d-5918-b5a6-58be3fcb98eb/scratchpad/S*.json`, with outputs in the matching `.md` files.
-- Derived-metrics script: `/tmp/claude-0/-home-claude-test/f1a7c95d-e67d-5918-b5a6-58be3fcb98eb/scratchpad/owner_metrics.py`.
+- Scenario files: `scenarios/funding/S*.json`, with outputs in the matching `.md` files.
+- Derived-metrics script: `scenarios/funding/owner_metrics.py`.
 
 **Limitation:** the model has **no grace period**, so repayments start in month 1. A 12-month grace period (Bank al Etihad) would improve year-1 cash beyond what is shown here.
 
