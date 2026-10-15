@@ -1,0 +1,38 @@
+{
+  "project": "Project name",
+  "currency": "USD",
+  "_note": "Every number needs a source. Put citations in the matching *_source field or 'ASSUMPTION: reason'. Prices exclude VAT.",
+  "capex": [
+    {"name": "Equipment", "amount": 0, "life_years": 5, "source": ""}
+  ],
+  "pre_opening_costs": [
+    {"name": "Licences and registration", "amount": 0, "source": ""}
+  ],
+  "working_capital_months": 3,
+  "revenue_streams": [
+    {
+      "name": "Main product",
+      "price": 0, "price_source": "",
+      "unit_cost": 0, "unit_cost_source": "",
+      "units_month_y1": [0,0,0,0,0,0,0,0,0,0,0,0],
+      "units_year": [0,0,0,0,0],
+      "volume_source": "units_year[0] is ignored (year 1 uses the monthly list); years 2-5 are annual totals"
+    }
+  ],
+  "price_growth": 0.0,
+  "channel_commission_pct": 0.0,
+  "fixed_opex_monthly": [
+    {"name": "Rent", "amount": 0, "source": ""}
+  ],
+  "opex_inflation": 0.0, "opex_inflation_source": "",
+  "payroll": [
+    {"role": "Staff", "count_by_year": [1,1,1,1,1], "monthly_salary": 0, "source": ""}
+  ],
+  "employer_contribution_rate": 0.0, "employer_contribution_source": "",
+  "salary_growth": 0.0,
+  "marketing": {"monthly_y1": 0, "pct_revenue_after_y1": 0.03, "source": ""},
+  "corporate_tax_rate": 0.0, "corporate_tax_source": "",
+  "financing": {"loan_amount": 0, "loan_rate": 0.0, "loan_years": 5, "source": ""},
+  "discount_rate": 0.12, "discount_rate_source": "",
+  "residual_value_pct": 0.0
+}
