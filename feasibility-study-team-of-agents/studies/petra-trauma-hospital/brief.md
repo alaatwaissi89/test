@@ -52,3 +52,7 @@ Owner: "Modify the project to be for the smallest allowed hospital and it's not 
 
 ## Version 3, 08:04 (owner): "best model of hospital with the least amount of money, could be upgraded in future"
 Base switched to the lean expandable Phase 1: land on long lease (18k/yr), 2,600 m² at 600/m² + 120k expansion provision (3rd floor, OR-3 shell, spare MRI room), refurbished CT, reagent-rental lab, cloud HIS, housekeeping outsourced, 96 staff, CBJ 2.5m + lease 0.5m. Version 2 archived.
+
+
+## Owner profile change (16 Oct 2026, 18:21)
+The owner / medical director is a physician in general, not an orthopaedic surgeon. Financial assumptions are unchanged (open-staff model, director salary 5,000/month), but surgical volume now depends on contracting resident orthopaedic and general surgeons; added as condition 6 and in risk 5.

@@ -95,7 +95,7 @@
 
 | Role | Count | Monthly gross JOD |
 |---|---:|---:|
-| Medical director (owner, orthopaedic surgeon) | 1 | 5,000 |
+| Medical director (owner, physician) | 1 | 5,000 |
 | Anaesthetists (also cover the 3-bed ICU) | 2 | 4,000 |
 | Emergency physicians (specialists) | 2 | 3,000 |
 | Paediatrician (paediatric ward, newborn cover) | 1 | 3,000 |

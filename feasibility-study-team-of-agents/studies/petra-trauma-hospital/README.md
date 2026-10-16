@@ -1,6 +1,6 @@
 # Petra surgical hospital, Wadi Musa (lean, expandable Phase 1: 20 beds)
 
-Feasibility study for a 20-bed specialised surgical hospital with a 24/7 trauma ER, day surgery, endoscopy, general, orthopaedic, gynaecological and paediatric surgery. Owner: Alaa (orthopaedic surgeon). Version 3, 16 Oct 2026.
+Feasibility study for a 20-bed specialised surgical hospital with a 24/7 trauma ER, day surgery, endoscopy, general, orthopaedic, gynaecological and paediatric surgery. Owner: Alaa (physician, medical director; not a surgeon). Version 3, 16 Oct 2026.
 
 - `feasibility-study.md` / `.docx`: the report (Arabic, bank format, English executive summary first). Base = lean expandable model (land leased, compact 2,600 m² building with structure for a 3rd floor, refurbished CT, 96 staff).
 - `model/ptc_model.py`: 10-year model (construction 2027–28, Y1 = 2029). `python3 ptc_model.py` regenerates `results.json`, `tables.md` and `PTC-financial-model.xlsx` (live formulas, checked against Python). Options A–D compared in `results.json` → `options`.

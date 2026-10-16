@@ -54,7 +54,7 @@ BASE = {
     # ---- payroll: monthly gross at full staffing, 2029 JOD [ASSUMPTION from salary research; see 03-operations]
     "staff": [
         # (role, count, monthly gross)
-        ("Medical director (owner, orthopaedic surgeon)", 1, 5000),
+        ("Medical director (owner, physician)", 1, 5000),
         ("Anaesthetists (also cover the 3-bed ICU)", 2, 4000),
         ("Emergency physicians (specialists)", 2, 3000),
         ("Paediatrician (paediatric ward, newborn cover)", 1, 3000),
