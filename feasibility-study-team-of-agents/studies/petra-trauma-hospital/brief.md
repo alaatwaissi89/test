@@ -49,3 +49,6 @@ Owner: "Modify the project to be for the smallest allowed hospital and it's not 
 - New base: 20-bed SPECIALISED SURGICAL hospital (licensing minimum for specialised = 20 beds; general = 40 beds with surgery, OB/GYN, internal medicine, paediatrics). Beds: surgical/ortho/trauma 9, gynaecology 4, paediatrics 4, ICU 2 + 1 isolation. Day-surgery unit (6 trolleys, not licensed beds), 2 ORs, endoscopy room, 24/7 ER (6 bays), CT.
 - [VERIFY at the MoH coordination meeting] that a multi-surgical-specialty hospital with gyn and paediatric wards can be licensed as "specialised". If MoH says it is a general hospital, the minimum is 40 beds with internal medicine and obstetrics (modelled as a fallback scenario).
 - The earlier 30-bed trauma-only model is kept for reference only (it failed: NPV with TV -2.9m).
+
+## Version 3, 08:04 (owner): "best model of hospital with the least amount of money, could be upgraded in future"
+Base switched to the lean expandable Phase 1: land on long lease (18k/yr), 2,600 m² at 600/m² + 120k expansion provision (3rd floor, OR-3 shell, spare MRI room), refurbished CT, reagent-rental lab, cloud HIS, housekeeping outsourced, 96 staff, CBJ 2.5m + lease 0.5m. Version 2 archived.

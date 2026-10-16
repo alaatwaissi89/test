@@ -96,6 +96,7 @@ BASE = {
     "marketing_contracts": [80000.0] + [50000.0] * (N - 1),
     "it_licences": 40000.0,
     "general_admin": 80000.0,
+    "ground_rent": 0.0,          # annual land lease (lean option leases the land instead of buying)
     "licence_fees": 16000.0,     # MoH bed licence renewals, EMRC, syndicates, municipal
     "maint_equip_pct": [0.02, 0.02, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06],  # of medical equipment cost (warranty first 2 years)
     "maint_building_pct": 0.01,
@@ -111,7 +112,8 @@ BASE = {
     "furniture_it": 200000.0,    # furniture 65k, HIS/EMR/PACS/network 135k
     "vehicles": 90000.0,         # 2 equipped ambulances (licensing minimum)
     "contingency_pct": 0.10,     # on building, MEP and equipment
-    "pre_opening": 320000.0,     # licences, recruitment and 3-month training payroll, commissioning, launch
+    "pre_opening": 320000.0,
+    "expansion_provision": 0.0,  # built-in provision for Phase 2 (stronger foundations/columns for an extra floor, spare risers, shell for OR 3)     # licences, recruitment and 3-month training payroll, commissioning, launch
     "no_tax_exemption_uplift": 0.0,   # set 0.16 if customs/sales-tax exemption on equipment and MEP is NOT granted
     "cash_reserve": 900000.0,    # ramp-up and debt-service reserve funded at opening
     "arrangement_fee_pct": 0.005,
@@ -130,6 +132,50 @@ BASE = {
     "grant": 0.0,
 }
 
+# ------------------------------------------------------------------ lean, expandable Phase 1 (owner request 08:04: least money, upgradable)
+STANDARD = copy.deepcopy(BASE)   # the 16 Oct 07:50 version (land bought, full build), kept as a comparison option
+_lean_staff = []
+for role, cnt, wage in STANDARD["staff"]:
+    if role.startswith("Housekeeping"):
+        continue                         # outsourced (cost moved to outsourced services)
+    if role.startswith("Security"):
+        cnt = 4
+    if role.startswith("GPs"):
+        cnt = 7
+    if role.startswith("Staff nurses"):
+        cnt = 34
+    if role.startswith("Reception"):
+        cnt = 6
+    if role.startswith("Finance"):
+        cnt = 4
+    if role.startswith("Purchasing"):
+        cnt = 1
+    if role.startswith("Lab"):
+        cnt = 4
+    if role.startswith("Radiographers"):
+        cnt = 4
+    _lean_staff.append((role, cnt, wage))
+BASE.update({
+    "staff": _lean_staff,
+    "staffing_factor": [0.75, 0.85, 0.95, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
+    "land_price_per_dunum": 0.0, "land_fees_pct": 0.0,   # land on a long lease (municipality, PDTRA, Awqaf or family) instead of purchase
+    "ground_rent": 18000.0,                               # [ASSUMPTION][VERIFY] 3 dunum long lease
+    "gfa_m2": 2600.0, "build_cost_m2": 600.0,             # compact 2-floor design, single core; 20 beds fitted out
+    "expansion_provision": 120000.0,                      # foundations/columns sized for a 3rd floor (+20 beds), spare MEP risers, OR-3 shell
+    "design_supervision_pct": 0.06,
+    "mep_special": 330000.0,
+    "med_equipment": 1300000.0,   # refurbished 64-slice CT (~120k), 1 C-arm, reagent-rental lab, basic endoscopy tower, leaner instrument sets
+    "furniture_it": 160000.0,     # cloud HIS/EMR/PACS (subscription in IT licences)
+    "vehicles": 70000.0,          # 2 ambulances (one refurbished)
+    "pre_opening": 280000.0,
+    "outsourced": 200000.0,       # + housekeeping outsourced
+    "it_licences": 50000.0,       # cloud HIS subscription
+    "consumables_pct": 0.19,      # +1 point for reagent-rental lab model
+    "cash_reserve": 700000.0,
+    "t1_amount": 2500000.0,
+    "t3_amount": 500000.0,
+})
+
 STAFF_COUNT = lambda inp: sum(c for _, c, _ in inp["staff"])
 
 
@@ -143,7 +189,7 @@ def pmt(rate, n, pv):
 
 def capex(inp):
     land = inp["land_dunum"] * inp["land_price_per_dunum"] * (1 + inp["land_fees_pct"])
-    building = inp["gfa_m2"] * inp["build_cost_m2"]
+    building = inp["gfa_m2"] * inp["build_cost_m2"] + inp["expansion_provision"]
     design = building * inp["design_supervision_pct"]
     up = 1 + inp["no_tax_exemption_uplift"]
     mep = inp["mep_special"] * up
@@ -155,7 +201,7 @@ def capex(inp):
     cont_equip = equip * inp["contingency_pct"]
     items = {
         "Land (purchase + registration fees)": land,
-        "Building (GFA x cost/m2)": building,
+        "Building (GFA x cost/m2, incl. expansion provision)": building,
         "Design and supervision": design,
         "Specialised MEP systems": mep,
         "Medical equipment": equip,
@@ -292,7 +338,7 @@ def run(inp):
         opex["Insurance and malpractice"].append(inp["insurance_malpractice"] * ci * of)
         opex["Marketing and contracts"].append(inp["marketing_contracts"][i] * ci * of)
         opex["IT licences"].append(inp["it_licences"] * ci * of)
-        opex["General and admin"].append(inp["general_admin"] * ci * of)
+        opex["General and admin"].append((inp["general_admin"] + inp["ground_rent"]) * ci * of)
         opex["Licence fees"].append(inp["licence_fees"] * ci * of)
         opex["Maintenance"].append((cx["classes"]["equipment"] * inp["maint_equip_pct"][i]
                                     + cx["classes"]["building"] * inp["maint_building_pct"]) * ci * of)
@@ -425,21 +471,27 @@ SCENARIOS = {
     "Tourism shock (tourists -80% Y1-Y2, ER -10%)": variant(tourist_factor=[0.2, 0.2] + [1.0] * 8,
                                                          er_per_day=[x * 0.9 for x in BASE["er_per_day"]]),
     "No customs/sales-tax exemption (+16% on equipment and MEP)": variant(no_tax_exemption_uplift=0.16),
-    "Construction +20% (build 780/m2)": variant(build_cost_m2=780.0),
+    "Construction 780/m2 (+30% on lean 600)": variant(build_cost_m2=780.0),
     "Payroll +15%": variant(staff=[(r, c, w * 1.15) for r, c, w in BASE["staff"]]),
     "MoH/RMS purchasing contract (+15% inpatient and surgery, DSO 150)": variant(
         ward_occ=[min(x * 1.15, 0.9) for x in BASE["ward_occ"]], icu_occ=[min(x * 1.15, 0.9) for x in BASE["icu_occ"]],
         surgeries=[x * 1.15 for x in BASE["surgeries"]], dso_days=150),
-    "Land contributed in kind (no purchase)": variant(land_price_per_dunum=0.0, land_fees_pct=0.0),
     "Conditions met: contracted volumes +20%": variant(volume_factor=1.20),
     "If MoH requires a general hospital (40 beds, internal medicine + obstetrics)": general40(),
 }
 
+OPTIONS = {
+    "A. Lean expandable Phase 1 (recommended base)": variant(),
+    "B. Standard build, land purchased (previous version)": copy.deepcopy(STANDARD),
+    "C. Lean Phase 1 + land bought instead of leased": variant(land_price_per_dunum=60000.0, land_fees_pct=0.09, ground_rent=0.0),
+    "D. Lean Phase 1 without expansion provision": variant(expansion_provision=0.0),
+}
+
 STRUCTURES = {
-    "F1 CBJ 3.0m + equipment lease 0.6m + equity": variant(),
-    "F2 CBJ 3.0m + Islamic ijara 1.2m + lease 0.6m + equity": variant(t2_amount=1200000.0),
+    "F1 CBJ 2.5m + equipment lease 0.5m + equity": variant(),
+    "F2 CBJ 2.5m + Islamic ijara 1.2m + lease 0.5m + equity": variant(t2_amount=1200000.0),
     "F3 Commercial loan only 3.6m at 8.5% (no CBJ)": variant(t1_amount=0.0, t2_amount=3600000.0, t2_rate=0.085, t3_amount=0.0),
-    "F4 Doctor-investor company: CBJ 2.0m + lease 0.6m, equity from 10-15 doctors": variant(t1_amount=2000000.0),
+    "F4 Doctor-investor company: CBJ 2.0m + lease 0.5m, more equity from 10-15 doctors": variant(t1_amount=2000000.0),
 }
 
 SENS = [  # (label, key, low, high) one-at-a-time on base
@@ -554,7 +606,7 @@ def write_excel(inp, base):
     scal_keys = ["ward_beds", "icu_beds", "p_ward_day", "p_icu_day", "p_surgery", "p_implant", "p_day_surgery", "p_day_implant", "p_endoscopy", "p_er", "p_ct", "p_opd",
                  "p_physio", "p_tourist", "pharmacy_pct", "price_growth", "discount_pct", "bad_debt_pct", "volume_factor",
                  "price_factor", "oncost_pct", "wage_growth", "consumables_pct", "implant_cost_pct", "doctor_incentive_pct",
-                 "radiology_read_fee", "utilities", "outsourced", "insurance_malpractice", "it_licences", "general_admin",
+                 "radiology_read_fee", "utilities", "outsourced", "insurance_malpractice", "it_licences", "general_admin", "ground_rent",
                  "licence_fees", "maint_building_pct", "cost_growth", "maint_capex_pct", "dso_days", "inventory_days",
                  "payables_days", "tax_rate", "tax_relief_pct", "tax_relief_years", "discount_rate", "terminal_growth",
                  "t1_amount", "t1_rate", "t1_grace", "t1_repay", "t2_amount", "t2_rate", "t2_grace", "t2_repay",
@@ -683,7 +735,7 @@ def write_excel(inp, base):
     r_ins = add("Insurance and malpractice", lambda i, c: f"={ref['insurance_malpractice']}*{CI(i)}")
     r_mk = add("Marketing and contracts", lambda i, c: f"={D('marketing_contracts', i)}*{CI(i)}")
     r_it = add("IT licences", lambda i, c: f"={ref['it_licences']}*{CI(i)}")
-    r_ga = add("General and admin", lambda i, c: f"={ref['general_admin']}*{CI(i)}")
+    r_ga = add("General and admin", lambda i, c: f"=({ref['general_admin']}+{ref['ground_rent']})*{CI(i)}")
     r_lf = add("Licence fees", lambda i, c: f"={ref['licence_fees']}*{CI(i)}")
     r_mt = add("Maintenance", lambda i, c: f"=({equip_ref}*{D('maint_equip_pct', i)}+{build_ref}*{ref['maint_building_pct']})*{CI(i)}")
     r_bd = add("Bad debts", lambda i, c: f"={c}{r_net}*{ref['bad_debt_pct']}")
@@ -830,7 +882,7 @@ def write_excel(inp, base):
     we = wb.create_sheet("Vs_reference_study")
     we["A1"] = "Comparison with the owner-supplied reference study (Ennab 2025, 80-bed general hospital, Wadi Musa)"
     we["A1"].font = bold
-    rows = [("Metric", "Reference study (80 beds)", "This study (20 beds)"),
+    rows = [("Metric", "Reference study (80 beds)", "This study (20 beds, lean Phase 1)"),
             ("Total investment JOD", 7574640, round(base["total_uses"])),
             ("Investment per bed", round(7574640 / 80), round(base["total_uses"] / 20)),
             ("Building cost per m2 (structure+finishing)", 298, BASE["build_cost_m2"]),
@@ -864,7 +916,8 @@ if __name__ == "__main__":
     sens = []
     for lab, key, lo, hi in SENS:
         sens.append((lab, lo, hi, scal(run(variant(**{key: lo}))), scal(run(variant(**{key: hi})))))
-    RESULTS.update({"base": scal(base), "scenarios": scen, "structures": struct,
+    opts = {k: scal(run(v)) for k, v in OPTIONS.items()}
+    RESULTS.update({"base": scal(base), "scenarios": scen, "structures": struct, "options": opts,
                     "sensitivity": [{"driver": a, "low": b, "high": c, "low_res": d, "high_res": e} for a, b, c, d, e in sens],
                     "base_detail": {k: base[k] for k in ["net_revenue", "total_opex", "ebitda", "ebitda_margin", "dep", "interest",
                                                          "tax", "net_income", "cfads", "debt_service", "dscr", "cash", "d_nwc", "fcf"]},
@@ -882,5 +935,7 @@ if __name__ == "__main__":
     print("staff", base["staff_count"], "payroll_full", round(base["base_payroll_full"]))
     for k, s in scen.items():
         print(f"{k[:50]:50s} EBITDA6 {s['ebitda_y6']:>10,.0f} minDSCR {s['min_dscr']:.2f}({s['min_dscr_year']}) DSCR6 {s['dscr_y6']:.2f} mincash {s['min_cash']:>11,.0f} gap {s['funding_gap']:>10,.0f} NPVtv {s['npv_tv']:>11,.0f} eqIRR {s['equity_irr_tv']}")
+    for k, s in opts.items():
+        print(f"OPT {k[:48]:48s} uses {s['total_uses']:>10,.0f} full {s['fully_funded_uses']:>10,.0f} eq {s['equity']:>10,.0f} gap {s['funding_gap']:>9,.0f} DSCR6 {s['dscr_y6']:.2f} NPVtv {s['npv_tv']:>11,.0f} IRR {s['irr_tv']} first125 {s['first_dscr_above_125']}")
     for k, s in struct.items():
         print(f"{k[:50]:50s} eq {s['equity']:>10,.0f} ({s['equity_share']:.0%}) minDSCR {s['min_dscr']:.2f}({s['min_dscr_year']}) DSCR6 {s['dscr_y6']:.2f} mincash {s['min_cash']:>11,.0f} eqIRR {s['equity_irr_tv']}")

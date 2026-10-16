@@ -4,41 +4,41 @@
 
 | Item | JOD |
 |---|---:|
-| Land (purchase + registration fees) | 196,200 |
-| Building (GFA x cost/m2) | 1,950,000 |
-| Design and supervision | 117,000 |
-| Specialised MEP systems | 380,000 |
-| Medical equipment | 1,650,000 |
-| Furniture and IT (HIS/EMR/PACS) | 200,000 |
-| Ambulances | 90,000 |
-| Contingency | 398,000 |
-| Pre-opening costs | 320,000 |
-| Interest during construction | 56,250 |
-| Arrangement fees | 15,000 |
-| Ramp-up and debt-service cash reserve | 900,000 |
-| **Total uses** | **6,272,450** |
-| CBJ programme loan (T1) | 3,000,000 |
-| Equipment finance lease (T3) | 600,000 |
-| Owner equity | 2,672,450 (42.6%) |
+| Land (purchase + registration fees) | 0 |
+| Building (GFA x cost/m2, incl. expansion provision) | 1,680,000 |
+| Design and supervision | 100,800 |
+| Specialised MEP systems | 330,000 |
+| Medical equipment | 1,300,000 |
+| Furniture and IT (HIS/EMR/PACS) | 160,000 |
+| Ambulances | 70,000 |
+| Contingency | 331,000 |
+| Pre-opening costs | 280,000 |
+| Interest during construction | 46,875 |
+| Arrangement fees | 12,500 |
+| Ramp-up and debt-service cash reserve | 700,000 |
+| **Total uses** | **5,011,175** |
+| CBJ programme loan (T1) | 2,500,000 |
+| Equipment finance lease (T3) | 500,000 |
+| Owner equity | 2,011,175 (40.1%) |
 
 ## Income statement and cash flow (Base, F1)
 
 | JOD | 2029 | 2030 | 2031 | 2032 | 2033 | 2034 | 2035 | 2036 | 2037 | 2038 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | Net revenue | 2,017,116 | 2,883,970 | 3,641,507 | 4,188,069 | 4,572,953 | 4,816,040 | 4,987,193 | 5,175,155 | 5,252,782 | 5,331,574 |
-| Total opex | 2,333,930 | 2,712,224 | 3,159,637 | 3,452,721 | 3,623,713 | 3,760,525 | 3,875,437 | 4,001,146 | 4,096,436 | 4,194,172 |
-| EBITDA | -316,814 | 171,746 | 481,870 | 735,348 | 949,240 | 1,055,515 | 1,111,756 | 1,174,010 | 1,156,346 | 1,137,403 |
-| EBITDA margin | -15.7% | 6.0% | 13.2% | 17.6% | 20.8% | 21.9% | 22.3% | 22.7% | 22.0% | 21.3% |
-| Depreciation | 454,078 | 454,078 | 454,078 | 460,905 | 468,758 | 373,332 | 382,362 | 378,856 | 161,685 | 171,534 |
-| Interest | 154,500 | 147,197 | 127,063 | 105,921 | 83,714 | 60,384 | 46,111 | 31,303 | 15,940 | 0 |
-| Tax | 0 | 0 | 0 | 0 | 0 | 0 | 87,398 | 160,409 | 205,532 | 202,832 |
-| Net income | -925,391 | -429,528 | -99,271 | 168,521 | 396,768 | 621,799 | 595,885 | 603,442 | 773,191 | 763,037 |
-| Change in working capital | 456,450 | 242,551 | 194,745 | 148,238 | 103,560 | 64,215 | 44,275 | 48,715 | 18,143 | 18,381 |
+| Total opex | 2,219,828 | 2,615,687 | 3,079,568 | 3,365,557 | 3,536,169 | 3,671,082 | 3,783,370 | 3,906,418 | 3,997,890 | 4,091,675 |
+| EBITDA | -202,711 | 268,282 | 561,939 | 822,511 | 1,036,784 | 1,144,958 | 1,203,823 | 1,268,737 | 1,254,892 | 1,239,899 |
+| EBITDA margin | -10.0% | 9.3% | 15.4% | 19.6% | 22.7% | 23.8% | 24.1% | 24.5% | 23.9% | 23.3% |
+| Depreciation | 372,105 | 372,105 | 372,105 | 378,932 | 386,785 | 307,359 | 316,389 | 315,740 | 146,694 | 156,543 |
+| Interest | 128,750 | 122,664 | 105,886 | 88,268 | 69,762 | 50,320 | 38,426 | 26,086 | 13,283 | 0 |
+| Tax | 0 | 0 | 0 | 0 | 4,696 | 165,328 | 178,292 | 194,651 | 229,932 | 227,505 |
+| Net income | -703,566 | -226,486 | 83,949 | 355,311 | 575,541 | 621,950 | 670,716 | 732,259 | 864,983 | 855,852 |
+| Change in working capital | 446,273 | 241,983 | 196,872 | 147,847 | 103,225 | 63,934 | 44,013 | 48,444 | 17,910 | 18,141 |
 | Maintenance capex | 0 | 0 | 54,623 | 62,821 | 68,594 | 72,241 | 74,808 | 77,627 | 78,792 | 79,974 |
-| CFADS | -773,263 | -70,806 | 232,503 | 524,289 | 777,086 | 919,059 | 905,275 | 887,259 | 853,880 | 836,216 |
-| Debt service | 258,834 | 587,330 | 587,330 | 587,330 | 587,330 | 440,995 | 440,995 | 440,995 | 440,995 | 0 |
-| DSCR | -2.99 | -0.12 | 0.40 | 0.89 | 1.32 | 2.08 | 2.05 | 2.01 | 1.94 | n/a |
-| Closing cash | -132,098 | -790,233 | -1,145,060 | -1,208,100 | -1,018,344 | -540,280 | -76,000 | 370,264 | 783,148 | 1,619,364 |
+| CFADS | -648,984 | 26,299 | 310,445 | 611,843 | 860,269 | 843,455 | 906,710 | 948,014 | 928,259 | 914,279 |
+| Debt service | 215,695 | 489,441 | 489,441 | 489,441 | 489,441 | 367,496 | 367,496 | 367,496 | 367,496 | 0 |
+| DSCR | -3.01 | 0.05 | 0.63 | 1.25 | 1.76 | 2.30 | 2.47 | 2.58 | 2.53 | n/a |
+| Closing cash | -164,680 | -627,822 | -806,818 | -684,416 | -313,589 | 162,370 | 701,584 | 1,282,102 | 1,842,865 | 2,757,144 |
 
 ## Revenue by service line (Base)
 
@@ -61,36 +61,35 @@
 
 | Scenario | Net rev Y6 | EBITDA Y6 | Margin Y6 | Min DSCR (year) | DSCR Y6 | Min cash (year) | Extra cash needed | NPV 10% no TV | NPV with TV | Project IRR with TV | Equity IRR with TV |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| Base | 4,816,040 | 1,055,515 | 21.9% | -2.99 (2029) | 2.08 | -1,208,100 (2032) | 1,208,100 | -2,943,770 | 793,109 | 11.7% | 12.8% |
-| Prudent (volumes -20%, prices -5%, DSO 150) | 3,687,996 | 238,518 | 6.5% | -4.54 (2029) | 0.25 | -5,161,980 (2037) | 5,161,980 | -6,404,199 | -5,796,153 | -11.7% | -14.8% |
-| Optimistic (volumes +15%) | 5,516,493 | 1,561,054 | 28.3% | -2.49 (2029) | 2.65 | -407,596 (2031) | 407,596 | -1,069,699 | 4,581,755 | 18.3% | 20.8% |
-| Tourism shock (tourists -80% Y1-Y2, ER -10%) | 4,734,076 | 994,013 | 21.0% | -3.20 (2029) | 1.95 | -1,481,496 (2032) | 1,481,496 | -3,277,640 | 215,841 | 10.5% | 11.4% |
-| No customs/sales-tax exemption (+16% on equipment and MEP) | 4,816,040 | 1,035,801 | 21.5% | -3.01 (2029) | 2.04 | -1,253,847 (2032) | 1,253,847 | -3,370,366 | 296,358 | 10.6% | 11.5% |
-| Construction +20% (build 780/m2) | 4,816,040 | 1,050,396 | 21.8% | -3.00 (2029) | 2.07 | -1,226,085 (2032) | 1,226,085 | -3,388,167 | 341,732 | 10.7% | 11.6% |
-| Payroll +15% | 4,816,040 | 803,179 | 16.7% | -3.66 (2029) | 1.51 | -2,091,987 (2033) | 2,091,987 | -4,106,110 | -1,371,874 | 6.8% | 7.2% |
-| MoH/RMS purchasing contract (+15% inpatient and surgery, DSO 150) | 5,100,583 | 1,255,174 | 24.6% | -3.80 (2029) | 2.13 | -1,313,070 (2031) | 1,313,070 | -2,681,768 | 1,744,914 | 13.4% | 14.7% |
-| Land contributed in kind (no purchase) | 4,816,040 | 1,055,515 | 21.9% | -2.99 (2029) | 2.08 | -1,208,100 (2032) | 1,208,100 | -2,747,570 | 989,309 | 12.2% | 13.4% |
-| Conditions met: contracted volumes +20% | 5,749,978 | 1,729,567 | 30.1% | -2.32 (2029) | 2.94 | -263,172 (2030) | 263,172 | -448,721 | 5,840,925 | 20.2% | 23.1% |
-| If MoH requires a general hospital (40 beds, internal medicine + obstetrics) | 5,653,874 | 939,481 | 16.6% | -4.34 (2029) | 1.77 | -2,257,467 (2032) | 2,257,467 | -6,614,214 | -3,406,012 | 4.1% | 4.2% |
+| Base | 4,816,040 | 1,144,958 | 23.8% | -3.01 (2029) | 2.30 | -806,818 (2031) | 806,818 | -1,502,654 | 2,583,075 | 16.0% | 18.1% |
+| Prudent (volumes -20%, prices -5%, DSO 150) | 3,687,996 | 338,527 | 9.2% | -4.85 (2029) | 0.58 | -3,700,947 (2037) | 3,700,947 | -4,872,095 | -3,873,945 | -4.4% | -6.3% |
+| Optimistic (volumes +15%) | 5,516,493 | 1,643,939 | 29.8% | -2.42 (2029) | 3.31 | -238,985 (2030) | 238,985 | 337,982 | 6,312,688 | 22.8% | 26.6% |
+| Tourism shock (tourists -80% Y1-Y2, ER -10%) | 4,734,076 | 1,084,276 | 22.9% | -3.26 (2029) | 2.32 | -1,025,920 (2031) | 1,025,920 | -1,831,101 | 2,014,566 | 14.8% | 16.6% |
+| No customs/sales-tax exemption (+16% on equipment and MEP) | 4,816,040 | 1,129,426 | 23.5% | -3.03 (2029) | 2.38 | -828,137 (2031) | 828,137 | -1,842,592 | 2,188,370 | 15.0% | 16.7% |
+| Construction 780/m2 (+30% on lean 600) | 4,816,040 | 1,138,816 | 23.6% | -3.03 (2029) | 2.30 | -822,578 (2031) | 822,578 | -2,035,931 | 2,041,424 | 14.5% | 16.0% |
+| Payroll +15% | 4,816,040 | 919,904 | 19.1% | -3.68 (2029) | 2.13 | -1,407,774 (2032) | 1,407,774 | -2,520,876 | 670,615 | 11.7% | 13.0% |
+| MoH/RMS purchasing contract (+15% inpatient and surgery, DSO 150) | 5,100,583 | 1,342,126 | 26.3% | -3.99 (2029) | 2.61 | -979,403 (2031) | 979,403 | -1,251,699 | 3,514,379 | 17.5% | 19.9% |
+| Conditions met: contracted volumes +20% | 5,749,978 | 1,810,266 | 31.5% | -2.23 (2029) | 3.65 | -109,373 (2030) | 109,373 | 950,163 | 7,554,527 | 24.7% | 29.0% |
+| If MoH requires a general hospital (40 beds, internal medicine + obstetrics) | 5,653,874 | 1,037,960 | 18.4% | -4.43 (2029) | 2.39 | -1,627,739 (2032) | 1,627,739 | -5,527,064 | -1,925,168 | 6.6% | 7.0% |
 
 ## Funding structures
 
 | Structure | Debt | Equity | Equity % | Min DSCR (year) | DSCR Y6 | Min cash (year) | Extra cash needed | Equity IRR with TV |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| F1 CBJ 3.0m + equipment lease 0.6m + equity | 3,600,000 | 2,672,450 | 42.6% | -2.99 (2029) | 2.08 | -1,208,100 (2032) | 1,208,100 | 12.8% |
-| F2 CBJ 3.0m + Islamic ijara 1.2m + lease 0.6m + equity | 4,800,000 | 1,523,450 | 24.1% | -2.22 (2029) | 1.42 | -1,927,833 (2033) | 1,927,833 | 13.6% |
-| F3 Commercial loan only 3.6m at 8.5% (no CBJ) | 3,600,000 | 2,772,200 | 43.5% | -0.11 (2030) | 1.44 | -1,408,448 (2032) | 1,408,448 | 11.5% |
-| F4 Doctor-investor company: CBJ 2.0m + lease 0.6m, equity from 10-15 doctors | 2,600,000 | 3,648,700 | 58.4% | -3.49 (2029) | 3.13 | -813,563 (2031) | 813,563 | 12.0% |
+| F1 CBJ 2.5m + equipment lease 0.5m + equity | 3,000,000 | 2,011,175 | 40.1% | -3.01 (2029) | 2.30 | -806,818 (2031) | 806,818 | 18.1% |
+| F2 CBJ 2.5m + Islamic ijara 1.2m + lease 0.5m + equity | 4,200,000 | 862,175 | 17.0% | -2.12 (2029) | 1.60 | -1,389,034 (2032) | 1,389,034 | 20.1% |
+| F3 Commercial loan only 3.6m at 8.5% (no CBJ) | 3,600,000 | 1,522,800 | 29.7% | 0.04 (2030) | 1.58 | -1,221,568 (2032) | 1,221,568 | 17.5% |
+| F4 Doctor-investor company: CBJ 2.0m + lease 0.5m, more equity from 10-15 doctors | 2,500,000 | 2,499,300 | 50.0% | -3.30 (2029) | 2.86 | -641,070 (2031) | 641,070 | 17.3% |
 
 ## Sensitivity (one at a time, Base)
 
 | Driver | Low | High | NPV with TV (low) | NPV with TV (high) | DSCR Y6 (low) | DSCR Y6 (high) |
 |---|---:|---:|---:|---:|---:|---:|
-| Volumes | 0.85 | 1.15 | -3,014,271 | 4,581,755 | 0.98 | 2.65 |
-| Prices | 0.9 | 1.1 | -1,882,894 | 3,459,407 | 1.31 | 2.39 |
-| Build cost/m2 | 550.0 | 900.0 | 1,140,321 | -75,199 | 2.09 | 2.06 |
-| Consumables % of revenue | 0.15 | 0.22 | 1,873,260 | -650,999 | 2.22 | 1.68 |
-| DSO days | 75 | 180 | 1,128,969 | -46,543 | 2.13 | 1.97 |
+| Volumes | 0.85 | 1.15 | -1,160,824 | 6,312,688 | 1.44 | 3.31 |
+| Prices | 0.9 | 1.1 | -49,906 | 5,209,189 | 1.83 | 3.01 |
+| Build cost/m2 | 550.0 | 900.0 | 2,733,534 | 1,680,323 | 2.30 | 2.34 |
+| Consumables % of revenue | 0.15 | 0.22 | 4,023,102 | 1,502,924 | 2.68 | 2.23 |
+| DSO days | 75 | 180 | 2,918,936 | 1,743,424 | 2.35 | 2.16 |
 
 ## Staffing at full complement
 
@@ -101,12 +100,12 @@
 | Emergency physicians (specialists) | 2 | 3,000 |
 | Paediatrician (paediatric ward, newborn cover) | 1 | 3,000 |
 | Internist (part-time consults) | 1 | 2,000 |
-| GPs / residents (ER, wards, ICU cover) | 8 | 1,100 |
+| GPs / residents (ER, wards, ICU cover) | 7 | 1,100 |
 | Director of nursing | 1 | 1,500 |
 | Charge nurses | 3 | 1,100 |
-| Staff nurses and midwife (ER, ICU, OR/day unit, wards) | 37 | 700 |
-| Radiographers / CT technologists | 5 | 750 |
-| Lab and blood-bank technicians | 5 | 750 |
+| Staff nurses and midwife (ER, ICU, OR/day unit, wards) | 34 | 700 |
+| Radiographers / CT technologists | 4 | 750 |
+| Lab and blood-bank technicians | 4 | 750 |
 | Pharmacists | 2 | 900 |
 | Physiotherapists | 2 | 750 |
 | Anaesthesia technicians | 2 | 800 |
@@ -114,12 +113,11 @@
 | CSSD and endoscopy technicians | 3 | 500 |
 | Biomedical / maintenance | 2 | 800 |
 | Administrative manager | 1 | 2,500 |
-| Finance and insurance claims | 5 | 750 |
+| Finance and insurance claims | 4 | 750 |
 | HR | 1 | 900 |
 | IT | 1 | 900 |
-| Reception and medical records | 7 | 450 |
-| Purchasing and stores | 2 | 600 |
+| Reception and medical records | 6 | 450 |
+| Purchasing and stores | 1 | 600 |
 | Contracts and marketing officer | 1 | 1,000 |
-| Housekeeping and porters | 11 | 380 |
-| Security | 5 | 400 |
-| **Total** | **117** | annual cost with on-costs 1,451,117 |
+| Security | 4 | 400 |
+| **Total** | **96** | annual cost with on-costs 1,294,224 |
